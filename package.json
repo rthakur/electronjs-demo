@@ -1,22 +1,48 @@
 {
-  "name": "electron-quick-start",
+  "name": "DigitalFoxApp",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "license": "MIT",
+  "description": "DigitalFox-Test App",
+  "author": "Rajender <rthakur.dev@gmail.com>",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "postinstall": "install-app-deps",
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "build": {
+    "appId": "10101",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "./assets/icon/png/icon.png"
+    },
+    "win": {
+      "target": "squirrel",
+      "icon": "./assets/icon/win/icon.ico"
+    }
+  },
+  "dependencies": {},
   "devDependencies": {
-    "electron": "^7.1.3"
+    "electron": "latest",
+    "electron-builder": "^21.2.0",
+    "electron-packager": "^14.1.1"
   }
 }
